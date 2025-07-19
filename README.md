@@ -37,23 +37,30 @@ This project analyzes massive Steam review datasets to reveal patterns in gaming
 
 ## **Screenshots**
 
-### **1. Dashboard Overview**
-*Main dashboard showing key metrics and navigation*
+### **1. Dashboard Home & Story**  
+![Dashboard Home](screenshots/dashboard_home_story.png)  
+*Main dashboard showing project overview, key findings, and navigation sidebar with professional dark theme*
 
-### **2. Game Popularity Analysis**
-*Charts showing total reviews vs. positive review percentages*
+### **2. Review Analytics Section**  
+![Review Analytics](screenshots/review_analytics_charts.png)  
+*Interactive charts showing total reviews per game, positive review percentages vs total reviews scatter plot, and top games with 500k+ reviews*
 
-### **3. Addictive Games Analysis**
-*Visualization of games with highest playtime and daily engagement*
+### **3. Gaming Addiction Analysis**  
+![Gaming Addiction](screenshots/gaming_addiction_playtime.png)  
+*Visualization of games with highest total playtime and average daily playtime, identifying most engaging/addictive games*
 
-### **4. Demographics Heatmap**
-*User demographics broken down by language and user type*
+### **4. Global Markets Demographics**  
+![Global Markets](screenshots/global_markets_heatmap.png)  
+*User demographics heatmap broken down by language and user type, with review counts by language visualization*
 
-### **5. Interactive Graph Network**
-*Network visualization of user-game-review relationships*
+### **5. Trending Games Timeline**  
+![Trending Games](screenshots/trending_games_timeline.png)  
+*Interactive time series analysis showing game popularity trends by quarter with multi-select game filtering*
 
-### **6. Trending Games Timeline**
-*Time series analysis of game popularity by quarter*
+### **6. Interactive Graph Network**  
+![Graph Network](screenshots/graph_network_visualization.png)  
+*Network visualization of user-game-review relationships using NetworkX and Pyvis for interactive exploration*
+
 
 ## **Technologies Used**
 

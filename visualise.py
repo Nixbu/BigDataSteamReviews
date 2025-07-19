@@ -21,162 +21,38 @@ CARD_BG = '#2d3748'
 BORDER_COLOR = '#4a5568'
 
 # Configure Streamlit theme and styling
-st.set_page_config(
-    page_title="Steam Reviews Dashboard",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+st.set_page_config(page_title="Steam Reviews Dashboard", layout="wide", initial_sidebar_state="expanded")
 
-# Professional CSS styling
+# Compact CSS styling
 st.markdown("""
 <style>
-    /* Main app background */
-    .main {
-        background: linear-gradient(135deg, #1a1d23 0%, #2d3748 100%);
-        color: #e2e8f0;
-    }
-
-    .stApp {
-        background: linear-gradient(135deg, #1a1d23 0%, #2d3748 100%);
-    }
-
-    /* Sidebar styling */
-    .stSidebar {
-        background: linear-gradient(180deg, #2d3748 0%, #1a1d23 100%);
-        border-right: 1px solid #4a5568;
-    }
-
-    /* Card-like containers for metrics */
-    .stMetric {
-        background: linear-gradient(145deg, #2d3748, #1a1d23);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid #4a5568;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-    }
-
-    .stMetric:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Headers with professional styling */
-    h1 {
-        color: #3182ce !important;
-        font-weight: 600 !important;
-        border-bottom: 2px solid #3182ce;
-        padding-bottom: 0.5rem;
-        margin-bottom: 2rem !important;
-    }
-
-    h2, h3 {
-        color: #63b3ed !important;
-        font-weight: 500 !important;
-        margin-top: 2rem !important;
-        margin-bottom: 1rem !important;
-    }
-
-    /* Text styling */
-    p, div, span, li, td, th {
-        color: #e2e8f0 !important;
-        line-height: 1.6;
-    }
-
-    /* Navigation styling */
-    .stRadio > label {
-        color: #e2e8f0 !important;
-        font-weight: 500;
-    }
-
-    .stRadio > div {
-        background: rgba(45, 55, 72, 0.6);
-        padding: 1rem;
-        border-radius: 8px;
-        border: 1px solid #4a5568;
-    }
-
-    /* Select boxes and inputs */
-    .stSelectbox, .stMultiSelect {
-        background: #2d3748;
-        border-radius: 8px;
-        border: 1px solid #4a5568;
-    }
-
-    /* Data tables */
-    .stDataFrame {
-        background: #2d3748;
-        border-radius: 8px;
-        border: 1px solid #4a5568;
-        overflow: hidden;
-    }
-
-    /* Info boxes */
-    .stInfo {
-        background: rgba(49, 130, 206, 0.15);
-        border: 1px solid #3182ce;
-        border-radius: 8px;
-        color: #e2e8f0 !important;
-    }
-
-    /* Buttons */
-    .stButton > button {
-        background: linear-gradient(145deg, #3182ce, #2c5282);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 0.75rem 1.5rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-    .stButton > button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
-    }
-
-    /* Metric styling */
-    [data-testid="metric-container"] {
-        background: linear-gradient(145deg, #2d3748, #1a1d23);
-        border: 1px solid #4a5568;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    [data-testid="metric-container"] > div {
-        color: #e2e8f0 !important;
-    }
-
-    [data-testid="metric-container"] [data-testid="metric-value"] {
-        color: #3182ce !important;
-        font-weight: 700;
-    }
-
-    /* Container spacing */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-
-    /* Professional spacing */
-    .element-container {
-        margin-bottom: 1rem;
-    }
+    .main { background: linear-gradient(135deg, #1a1d23 0%, #2d3748 100%); color: #e2e8f0; }
+    .stApp { background: linear-gradient(135deg, #1a1d23 0%, #2d3748 100%); }
+    .stSidebar { background: linear-gradient(180deg, #2d3748 0%, #1a1d23 100%); border-right: 1px solid #4a5568; }
+    .stMetric { background: linear-gradient(145deg, #2d3748, #1a1d23); padding: 1rem; border-radius: 8px; border: 1px solid #4a5568; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+    .stMetric:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); }
+    h1 { color: #3182ce !important; font-weight: 600 !important; border-bottom: 2px solid #3182ce; padding-bottom: 0.3rem; margin-bottom: 1rem !important; }
+    h2, h3 { color: #63b3ed !important; font-weight: 500 !important; margin-top: 1rem !important; margin-bottom: 0.5rem !important; }
+    p, div, span, li, td, th { color: #e2e8f0 !important; line-height: 1.4; }
+    .stRadio > label { color: #e2e8f0 !important; font-weight: 500; }
+    .stRadio > div { background: rgba(45, 55, 72, 0.6); padding: 0.75rem; border-radius: 6px; border: 1px solid #4a5568; }
+    .stSelectbox, .stMultiSelect { background: #2d3748; border-radius: 6px; border: 1px solid #4a5568; }
+    .stDataFrame { background: #2d3748; border-radius: 6px; border: 1px solid #4a5568; overflow: hidden; }
+    .stInfo { background: rgba(49, 130, 206, 0.15); border: 1px solid #3182ce; border-radius: 6px; color: #e2e8f0 !important; }
+    .stButton > button { background: linear-gradient(145deg, #3182ce, #2c5282); color: white; border: none; border-radius: 6px; padding: 0.5rem 1rem; font-weight: 500; }
+    .stButton > button:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(49, 130, 206, 0.3); }
+    [data-testid="metric-container"] { background: linear-gradient(145deg, #2d3748, #1a1d23); border: 1px solid #4a5568; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+    [data-testid="metric-container"] > div { color: #e2e8f0 !important; }
+    [data-testid="metric-container"] [data-testid="metric-value"] { color: #3182ce !important; font-weight: 700; font-size: 1.5rem !important; }
+    .block-container { padding-top: 1rem; padding-bottom: 1rem; max-width: 100%; }
+    .element-container { margin-bottom: 0.5rem; }
+    .stMarkdown { margin-bottom: 0.5rem !important; }
+    .row-widget { margin-bottom: 0.5rem; }
 </style>
 """, unsafe_allow_html=True)
 
 
 def fetch_data(table_name):
-    """
-    Fetch data from the specified SQLite table.
-
-    Parameters:
-    table_name (str): The name of the SQLite table to fetch data from.
-
-    Returns:
-    pandas.DataFrame: The data from the specified table.
-    """
     query = f"SELECT * FROM {table_name}"
     return pd.read_sql_query(query, conn)
 
@@ -193,384 +69,263 @@ plt.rcParams['ytick.color'] = LIGHT_TEXT
 plt.rcParams['grid.color'] = BORDER_COLOR
 plt.rcParams['grid.alpha'] = 0.3
 
-# App title with professional styling
+# App title
 st.title("🎮 Steam Reviews Dashboard")
 st.markdown("### 📊 *Analyzing 21 Million Gaming Reviews*")
 
 # Create sidebar navigation
-nav = st.sidebar.radio(
-    "📊 Navigation",
-    ["📖 Story & Insights", "📈 Review Analytics", "🎯 Gaming Addiction", "🌍 Global Markets", "📅 Trending Analysis",
-     "👥 User Demographics"]
-)
+nav = st.sidebar.radio("📊 Navigation",
+                       ["📖 Story & Insights", "📈 Review Analytics", "🎯 Gaming Addiction", "🌍 Global Markets",
+                        "📅 Trending Analysis", "👥 User Demographics"])
 
 if nav == "📖 Story & Insights":
-    st.header("🎮 Project Story and Key Insights")
+    col1, col2 = st.columns([3, 2])
 
-    # Project Overview
-    st.subheader("📋 Project Overview")
-    st.write(
-        "This project analyzes 21 million Steam reviews to reveal the complex relationships between user satisfaction, game popularity, and consumer behavior.")
-
-    # Key Findings
-    st.subheader("🔥 Key Findings")
-
-    # 1. Popularity ≠ Satisfaction
-    st.markdown("### 🏆 1. Popularity ≠ Satisfaction")
-    col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""
-        🎯 Popular games like PLAYERUNKNOWN'S BATTLEGROUNDS received mixed reviews (53.91% positive)
+        st.header("🎮 Project Story and Key Insights")
+        st.markdown("**📋 Project Overview**")
+        st.write(
+            "This project analyzes 21 million Steam reviews to reveal the complex relationships between user satisfaction, game popularity, and consumer behavior.")
 
-        💎 Niche games like ULTRAKILL achieved nearly 100% positive reviews but with lower exposure
-        """)
+        st.markdown("**🔥 Key Findings**")
+
+        st.markdown("**🏆 1. Popularity ≠ Satisfaction**")
+        st.markdown(
+            "🎯 Popular games like PLAYERUNKNOWN'S BATTLEGROUNDS received mixed reviews (53.91% positive). 💎 Niche games like ULTRAKILL achieved nearly 100% positive reviews but with lower exposure")
+
+        st.markdown("**⚡ 2. Addictive Games & Promising Markets**")
+        st.markdown(
+            "🕐 Games like Black Desert Online average 5.6 daily playing hours (2021). 🌏 Vietnam and Brazil show high engagement and user loyalty (94% recommendations in Brazil)")
+
+        st.markdown("**🗺️ 3. Localization & Cultural Adaptation Challenges**")
+        st.markdown(
+            "🏮 China, Taiwan, and Japan: High playtime but lower recommendations (56%-70%). 🎊 Poland and Brazil: Successful cultural adaptation (94%-95% recommendations)")
+
     with col2:
         st.info("**🧠 Key Insight**: Popularity reflects broad exposure rather than quality or satisfaction")
-
-    # 2. Addictive Games and Promising Markets
-    st.markdown("### ⚡ 2. Addictive Games & Promising Markets")
-    col3, col4 = st.columns(2)
-    with col3:
-        st.markdown("""
-        🕐 Games like Black Desert Online average 5.6 daily playing hours (2021)
-
-        🌏 Vietnam and Brazil show high engagement and user loyalty (94% recommendations in Brazil)
-        """)
-    with col4:
         st.info("**📈 Key Insight**: Emerging markets show significant growth potential and high user engagement")
-
-    # 3. Localization Challenges
-    st.markdown("### 🗺️ 3. Localization & Cultural Adaptation Challenges")
-    col5, col6 = st.columns(2)
-    with col5:
-        st.markdown("""
-        🏮 China, Taiwan, and Japan: High playtime but lower recommendations (56%-70%)
-
-        🎊 Poland and Brazil: Successful cultural adaptation (94%-95% recommendations)
-        """)
-    with col6:
         st.info("**🎯 Key Insight**: Cultural adaptation significantly impacts user satisfaction")
 
-    # Metrics Dashboard
-    st.subheader("📊 Key Metrics Overview")
-    metric1, metric2, metric3 = st.columns(3)
-    with metric1:
-        st.metric(label="🎮 Total Reviews Analyzed", value="21M")
-    with metric2:
-        st.metric(label="👍 Average Recommendation Rate", value="53.91%")
-    with metric3:
-        st.metric(label="⏰ Highest Daily Playtime", value="5.6 hrs")
+        st.markdown("**📊 Key Metrics Overview**")
+        metric1, metric2, metric3 = st.columns(3)
+        with metric1: st.metric("🎮 Total Reviews", "21M")
+        with metric2: st.metric("👍 Avg Recommendation", "53.91%")
+        with metric3: st.metric("⏰ Max Daily Playtime", "5.6 hrs")
 
-if nav == "📈 Review Analytics":
-    st.header("📈 Review Analytics: Popularity vs Quality Analysis")
+elif nav == "📈 Review Analytics":
+    st.header("📈 Review Analytics")
 
-    # Load the data for Q1.1, Q1.2, and Q1.3
     q1_1 = fetch_data("question1_1_samples_500")
     q1_2 = fetch_data("question1_2_samples_500")
     q1_3 = fetch_data("question1_3_samples_500")
 
-    # Display the sample data for Q1.1
-    st.subheader("📊 Q1.1: Total Reviews per Game")
-    st.write(q1_1.head(500))
+    col1, col2 = st.columns(2)
 
-    # Create a bar chart for Q1.1
-    fig, ax = plt.subplots(figsize=(12, 6))
-    q1_1.sort_values("total_reviews", ascending=False).head(10).plot(
-        kind="bar", x="app_name", y="total_reviews", ax=ax, color=ACCENT_BLUE
-    )
-    ax.set_title("🏆 Top 10 Games by Total Reviews", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🎮 Game", fontsize=12)
-    ax.set_ylabel("📝 Total Reviews", fontsize=12)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(fig)
+    with col1:
+        st.markdown("**📊 Q1.1: Total Reviews per Game**")
+        st.dataframe(q1_1.head(10), height=200)
 
-    # Display the sample data for Q1.2
-    st.subheader("💯 Q1.2: Positive Reviews and Percentage")
-    st.write(q1_2.head(500))
+        fig, ax = plt.subplots(figsize=(8, 4))
+        q1_1.sort_values("total_reviews", ascending=False).head(8).plot(kind="bar", x="app_name", y="total_reviews",
+                                                                        ax=ax, color=ACCENT_BLUE)
+        ax.set_title("🏆 Top 8 Games by Reviews", fontsize=14, color=ACCENT_BLUE)
+        ax.set_xlabel("🎮 Game", fontsize=10)
+        ax.set_ylabel("📝 Reviews", fontsize=10)
+        plt.xticks(rotation=45, ha='right', fontsize=8)
+        plt.tight_layout()
+        st.pyplot(fig)
 
-    # Create a scatter plot for Q1.2
-    fig, ax = plt.subplots(figsize=(12, 6))
-    ax.scatter(q1_2["total_reviews"], q1_2["positive_percentage"],
-               color=SUCCESS_GREEN, alpha=0.7, s=50)
-    ax.set_title("👍 Positive Review Percentage vs. Total Reviews", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("📊 Total Reviews", fontsize=12)
-    ax.set_ylabel("💚 Positive Review Percentage", fontsize=12)
-    st.pyplot(fig)
+    with col2:
+        st.markdown("**💯 Q1.2: Positive Reviews and Percentage**")
+        st.dataframe(q1_2.head(10), height=200)
 
-    # Display the sample data for Q1.3
-    st.subheader("🔥 Q1.3: Games with Over 500,000 Reviews")
-    st.write(q1_3.head(500))
+        fig, ax = plt.subplots(figsize=(8, 4))
+        ax.scatter(q1_2["total_reviews"], q1_2["positive_percentage"], color=SUCCESS_GREEN, alpha=0.7, s=30)
+        ax.set_title("👍 Positive % vs. Total Reviews", fontsize=14, color=ACCENT_BLUE)
+        ax.set_xlabel("📊 Total Reviews", fontsize=10)
+        ax.set_ylabel("💚 Positive %", fontsize=10)
+        plt.tight_layout()
+        st.pyplot(fig)
 
-    # Create a stacked bar chart for Q1.3
-    fig, ax = plt.subplots(figsize=(12, 6))
-
-    # Sort the data and select top 10
-    q1_3_sorted = q1_3.sort_values("total_reviews", ascending=False).head(10)
-
-    # Plot total reviews (base bar)
-    ax.bar(
-        q1_3_sorted["app_name"],
-        q1_3_sorted["total_reviews"],
-        color=WARNING_ORANGE,
-        label="📊 Total Reviews"
-    )
-
-    # Overlay positive reviews (colored portion)
-    ax.bar(
-        q1_3_sorted["app_name"],
-        q1_3_sorted["positive_reviews"],
-        color=SUCCESS_GREEN,
-        label="👍 Positive Reviews"
-    )
-
-    # Customize the plot
-    ax.set_title("🚀 Top 10 Games with Over 500,000 Reviews", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🎮 Game", fontsize=12)
-    ax.set_ylabel("📈 Number of Reviews", fontsize=12)
-    ax.legend()
-    plt.xticks(rotation=45, ha="right")
-
-    st.pyplot(fig)
+    st.markdown("**🔥 Q1.3: Games with Over 500,000 Reviews**")
+    col3, col4 = st.columns([1, 2])
+    with col3:
+        st.dataframe(q1_3.head(10), height=300)
+    with col4:
+        fig, ax = plt.subplots(figsize=(10, 5))
+        q1_3_sorted = q1_3.sort_values("total_reviews", ascending=False).head(8)
+        ax.bar(q1_3_sorted["app_name"], q1_3_sorted["total_reviews"], color=WARNING_ORANGE, label="📊 Total Reviews")
+        ax.bar(q1_3_sorted["app_name"], q1_3_sorted["positive_reviews"], color=SUCCESS_GREEN,
+               label="👍 Positive Reviews")
+        ax.set_title("🚀 Top 8 Games with Over 500,000 Reviews", fontsize=14, color=ACCENT_BLUE)
+        ax.set_xlabel("🎮 Game", fontsize=10)
+        ax.set_ylabel("📈 Reviews", fontsize=10)
+        ax.legend()
+        plt.xticks(rotation=45, ha="right", fontsize=8)
+        plt.tight_layout()
+        st.pyplot(fig)
 
 elif nav == "🎯 Gaming Addiction":
-    st.header("🎯 Gaming Addiction: Identifying Most Engaging Games")
+    st.header("🎯 Gaming Addiction")
 
-    # Load the data for Q2.1, Q2.2, and Q2.3
     q2_1 = fetch_data("question2_1_samples_500")
     q2_2 = fetch_data("question2_2_samples_500")
     q2_3 = fetch_data("question2_3_samples_500")
 
-    # Display the sample data for Q2.1
-    st.subheader("👑 Q2.1: Game with Highest Playtime Forever")
-    st.write(q2_1.head(1))
+    col1, col2 = st.columns([1, 2])
 
-    # Create a bar chart for Q2.2
-    fig, ax = plt.subplots(figsize=(12, 6))
-    q2_2.sort_values("total_playtime", ascending=False).head(10).plot(
-        kind="bar", x="app_name", y="total_playtime", ax=ax, color=ACCENT_BLUE
-    )
-    ax.set_title("⏰ Top 10 Games by Total Playtime", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🎮 Game", fontsize=12)
-    ax.set_ylabel("⏱️ Total Playtime (hours)", fontsize=12)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(fig)
+    with col1:
+        st.markdown("**👑 Q2.1: Highest Playtime Forever**")
+        st.dataframe(q2_1.head(1))
 
-    # Display the sample data for Q2.3
-    st.subheader("📅 Q2.3: Average Playtime per Day")
-    st.write(q2_3.head(500))
+        st.markdown("**📅 Q2.3: Average Playtime per Day**")
+        st.dataframe(q2_3.head(15), height=300)
 
-    # Create a bar chart for Q2.3
-    fig, ax = plt.subplots(figsize=(12, 6))
-    q2_3.sort_values("average_playtime_per_day", ascending=False).head(10).plot(
-        kind="bar", x="app_name", y="average_playtime_per_day", ax=ax, color=SUCCESS_GREEN
-    )
-    ax.set_title("🔥 Top 10 Games by Average Playtime per Day", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🎮 Game", fontsize=12)
-    ax.set_ylabel("📈 Average Playtime per Day (hours)", fontsize=12)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(fig)
+    with col2:
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
+
+        q2_2.sort_values("total_playtime", ascending=False).head(8).plot(kind="bar", x="app_name", y="total_playtime",
+                                                                         ax=ax1, color=ACCENT_BLUE)
+        ax1.set_title("⏰ Top 8 Games by Total Playtime", fontsize=14, color=ACCENT_BLUE)
+        ax1.set_xlabel("🎮 Game", fontsize=10)
+        ax1.set_ylabel("⏱️ Total Playtime (hours)", fontsize=10)
+        ax1.tick_params(axis='x', rotation=45, labelsize=8)
+
+        q2_3.sort_values("average_playtime_per_day", ascending=False).head(8).plot(kind="bar", x="app_name",
+                                                                                   y="average_playtime_per_day", ax=ax2,
+                                                                                   color=SUCCESS_GREEN)
+        ax2.set_title("🔥 Top 8 Games by Avg Playtime/Day", fontsize=14, color=ACCENT_BLUE)
+        ax2.set_xlabel("🎮 Game", fontsize=10)
+        ax2.set_ylabel("📈 Avg Playtime/Day (hours)", fontsize=10)
+        ax2.tick_params(axis='x', rotation=45, labelsize=8)
+
+        plt.tight_layout()
+        st.pyplot(fig)
 
 elif nav == "🌍 Global Markets":
-    st.header("🌍 Global Markets: Worldwide Gaming Demographics")
+    st.header("🌍 Global Markets")
 
-    # Load the data for Q3.1 and Q3.2
     q3_1 = fetch_data("question3_1_samples_500")
     q3_2 = fetch_data("question3_2_samples_500")
 
-    # Display the sample data for Q3.1
-    st.subheader("🗣️ Q3.1: Reviews by Language")
-    st.write(q3_1.head(500))
+    col1, col2 = st.columns(2)
 
-    # Create a bar chart for Q3.1
-    fig, ax = plt.subplots(figsize=(12, 6))
-    q3_1.sort_values("review_count", ascending=False).head(10).plot(
-        kind="bar", x="language", y="review_count", ax=ax, color=ACCENT_BLUE
-    )
-    ax.set_title("🌐 Top 10 Languages by Review Count", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🗣️ Language", fontsize=12)
-    ax.set_ylabel("📊 Review Count (thousands)", fontsize=12)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(fig)
+    with col1:
+        st.markdown("**🗣️ Q3.1: Reviews by Language**")
+        st.dataframe(q3_1.head(15), height=300)
 
-    # Display the sample data for Q3.2
-    st.subheader("💰 Q3.2: Users by Language who Purchased Games")
-    st.write(q3_2.head(500))
+        fig, ax = plt.subplots(figsize=(8, 5))
+        q3_1.sort_values("review_count", ascending=False).head(8).plot(kind="bar", x="language", y="review_count",
+                                                                       ax=ax, color=ACCENT_BLUE)
+        ax.set_title("🌐 Top 8 Languages by Reviews", fontsize=12, color=ACCENT_BLUE)
+        ax.set_xlabel("🗣️ Language", fontsize=10)
+        ax.set_ylabel("📊 Reviews (k)", fontsize=10)
+        plt.xticks(rotation=45, ha='right', fontsize=8)
+        plt.tight_layout()
+        st.pyplot(fig)
 
-    # Create a bar chart for Q3.2
-    fig, ax = plt.subplots(figsize=(12, 6))
-    q3_2.sort_values("total_users", ascending=False).head(10).plot(
-        kind="bar", x="language", y="total_users", ax=ax, color=SUCCESS_GREEN
-    )
-    ax.set_title("🛒 Top 10 Languages by Purchasing Users", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🌍 Language", fontsize=12)
-    ax.set_ylabel("👥 Total Purchasing Users", fontsize=12)
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot(fig)
+    with col2:
+        st.markdown("**💰 Q3.2: Purchasing Users by Language**")
+        st.dataframe(q3_2.head(15), height=300)
+
+        fig, ax = plt.subplots(figsize=(8, 5))
+        q3_2.sort_values("total_users", ascending=False).head(8).plot(kind="bar", x="language", y="total_users", ax=ax,
+                                                                      color=SUCCESS_GREEN)
+        ax.set_title("🛒 Top 8 Languages by Purchasing Users", fontsize=12, color=ACCENT_BLUE)
+        ax.set_xlabel("🌍 Language", fontsize=10)
+        ax.set_ylabel("👥 Total Users", fontsize=10)
+        plt.xticks(rotation=45, ha='right', fontsize=8)
+        plt.tight_layout()
+        st.pyplot(fig)
 
 elif nav == "📅 Trending Analysis":
-    st.header("📅 Trending Analysis: Game Popularity Over Time")
+    st.header("📅 Trending Analysis")
 
-    # Load the data for Q4
     q4 = fetch_data("question4_samples_500")
-
-    # Convert quarter string to datetime
     q4['quarter'] = pd.to_datetime(q4['quarter'])
 
-    # Display the sample data for Q4
-    st.subheader("📈 Q4: Top 10 Trending Games per Quarter")
-    st.write(q4.head(10))
+    col1, col2 = st.columns([1, 3])
 
-    # Get unique game names
-    unique_games = q4['app_name'].unique().tolist()
+    with col1:
+        st.markdown("**📈 Q4: Top Trending Games**")
+        st.dataframe(q4.head(20), height=400)
 
-    # Multiselect for games
-    selected_games = st.multiselect(
-        "🎮 Select Games to Visualize",
-        options=unique_games,
-        default=unique_games[:3]  # Default to first 3 games
-    )
+        unique_games = q4['app_name'].unique().tolist()
+        selected_games = st.multiselect("🎮 Select Games", options=unique_games, default=unique_games[:3])
 
-    # Filter and sort data for selected games
-    filtered_q4 = q4[q4['app_name'].isin(selected_games)].sort_values('quarter')
+    with col2:
+        if selected_games:
+            filtered_q4 = q4[q4['app_name'].isin(selected_games)].sort_values('quarter')
 
-    # Create the plot
-    plt.figure(figsize=(15, 8))
+            fig, ax = plt.subplots(figsize=(12, 6))
+            colors = [ACCENT_BLUE, SUCCESS_GREEN, WARNING_ORANGE, '#ff6b9d', '#c44569', '#f8b500']
 
-    # Professional color palette for games
-    colors = [ACCENT_BLUE, SUCCESS_GREEN, WARNING_ORANGE, '#ff6b9d', '#c44569', '#f8b500']
+            for i, game in enumerate(selected_games):
+                game_data = filtered_q4[filtered_q4['app_name'] == game]
+                ax.plot(game_data['quarter'], game_data['review_count'], marker='o', linewidth=3, markersize=6,
+                        label=game, color=colors[i % len(colors)])
 
-    # Plot each selected game
-    for i, game in enumerate(selected_games):
-        game_data = filtered_q4[filtered_q4['app_name'] == game]
-        plt.plot(game_data['quarter'], game_data['review_count'],
-                 marker='o', linewidth=3, markersize=8,
-                 label=game, color=colors[i % len(colors)])
-
-    # Format x-axis dates
-    ax = plt.gca()
-
-    # Use MonthLocator for quarterly ticks
-    ax.xaxis.set_major_locator(plt.matplotlib.dates.MonthLocator(interval=3))
+            ax.xaxis.set_major_locator(plt.matplotlib.dates.MonthLocator(interval=3))
 
 
-    # Custom formatter for quarter display
-    def quarter_formatter(x, pos=None):
-        date = plt.matplotlib.dates.num2date(x)
-        quarter = (date.month - 1) // 3 + 1
-        return f"{date.year}-Q{quarter}"
+            def quarter_formatter(x, pos=None):
+                date = plt.matplotlib.dates.num2date(x)
+                quarter = (date.month - 1) // 3 + 1
+                return f"{date.year}-Q{quarter}"
 
 
-    ax.xaxis.set_major_formatter(plt.FuncFormatter(quarter_formatter))
-    plt.xticks(rotation=45, ha='right', fontsize=10)
+            ax.xaxis.set_major_formatter(plt.FuncFormatter(quarter_formatter))
 
-    plt.title('🚀 Trending Games per Quarter', fontsize=16, color=ACCENT_BLUE)
-    plt.xlabel('📅 Quarter', fontsize=12)
-    plt.ylabel('📊 Review Count', fontsize=12)
-    plt.legend(title='🎮 Games', title_fontsize=10, bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.tight_layout()
-
-    # Display the plot
-    st.pyplot(plt)
-
-    # Additional insights
-    st.subheader("🔍 Insights")
-    if not filtered_q4.empty:
-        max_review_game = filtered_q4.loc[filtered_q4['review_count'].idxmax()]
-        quarter = (max_review_game['quarter'].month - 1) // 3 + 1
-        st.write(
-            f"🏆 Highest reviewed game: {max_review_game['app_name']} with "
-            f"{max_review_game['review_count']} reviews in "
-            f"{max_review_game['quarter'].year}-Q{quarter}"
-        )
-
-    # Data table for selected games
-    if selected_games:
-        st.subheader("📋 Selected Games Data")
-        st.dataframe(filtered_q4)
+            plt.xticks(rotation=45, ha='right', fontsize=9)
+            plt.title('🚀 Trending Games per Quarter', fontsize=14, color=ACCENT_BLUE)
+            plt.xlabel('📅 Quarter', fontsize=10)
+            plt.ylabel('📊 Review Count', fontsize=10)
+            plt.legend(title='🎮 Games', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=9)
+            plt.tight_layout()
+            st.pyplot(fig)
 
 elif nav == "👥 User Demographics":
-    st.header("👥 User Demographics: Player Behavior Analysis")
+    st.header("👥 User Demographics")
 
-    # Load the data for Q5
     q5 = fetch_data("question5_samples_500")
 
-    # Display the sample data for Q5
-    st.subheader("📊 Q5: User Demographics")
-    st.write(q5.head(500))
+    col1, col2 = st.columns([1, 2])
 
-    # Create a heatmap for Q5 with improved colors for magnitude distinction
-    fig, ax = plt.subplots(figsize=(12, 6))
-    # Use pivot_table with an aggregation function to handle duplicates
-    pivot_table = q5.pivot_table(
-        index="language",
-        columns="user_type",
-        values="unique_users",
-        aggfunc="sum"  # Sum duplicates if they exist
-    )
+    with col1:
+        st.markdown("**📊 Q5: User Demographics**")
+        st.dataframe(q5.head(20), height=400)
 
-    # Create a custom colormap that emphasizes orders of magnitude
-    # Apply log transformation to better show magnitude differences
-    pivot_log = np.log2(pivot_table + 1)  # Add 1 to avoid log(0)
+        selected_language = st.selectbox("🌐 Select Language", options=q5["language"].unique(), index=0)
 
-    # Create custom discrete color levels based on powers of 2
-    from matplotlib.colors import ListedColormap
-    import matplotlib.colors as mcolors
+    with col2:
+        # Heatmap
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Define color levels for different magnitudes (powers of 2)
-    colors_list = [
-        '#0f1419',  # Very low (near 0)
-        '#1a2332',  # Low (2-8)
-        '#2d4a5c',  # Medium-low (16-64)
-        '#3d6b7d',  # Medium (128-512)
-        '#4d8ca0',  # Medium-high (1024-4096)
-        '#63b3d1',  # High (8192-32768)
-        '#8cc9e8',  # Very high (65536+)
-        '#b3ddf5'  # Extreme high
-    ]
+        pivot_table = q5.pivot_table(index="language", columns="user_type", values="unique_users", aggfunc="sum")
+        from matplotlib.colors import ListedColormap
+        import matplotlib.colors as mcolors
 
-    # Create custom colormap
-    custom_cmap = ListedColormap(colors_list)
+        colors_list = ['#0f1419', '#1a2332', '#2d4a5c', '#3d6b7d', '#4d8ca0', '#63b3d1', '#8cc9e8', '#b3ddf5']
+        custom_cmap = ListedColormap(colors_list)
 
-    # Create heatmap with log-scaled colors
-    sns.heatmap(pivot_table,
-                annot=True,
-                cmap=custom_cmap,
-                ax=ax,
-                fmt=".0f",
-                cbar_kws={'label': '👥 Users (Log Scale)'},
-                norm=mcolors.LogNorm(vmin=pivot_table.min().min(), vmax=pivot_table.max().max()))
+        sns.heatmap(pivot_table, annot=True, cmap=custom_cmap, ax=ax1, fmt=".0f", cbar_kws={'label': '👥 Users'},
+                    norm=mcolors.LogNorm(vmin=pivot_table.min().min(), vmax=pivot_table.max().max()))
+        ax1.set_title("🌍 User Demographics Heatmap", fontsize=12, color=ACCENT_BLUE)
+        ax1.set_xlabel("🎮 User Type", fontsize=10)
+        ax1.set_ylabel("🗣️ Language", fontsize=10)
 
-    ax.set_title("🌍 User Demographics by Language and User Type", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🎮 User Type", fontsize=12)
-    ax.set_ylabel("🗣️ Language", fontsize=12)
-    st.pyplot(fig)
+        # Bar chart for selected language
+        selected_data = q5[q5["language"] == selected_language]
+        bars = ax2.bar(selected_data["user_type"], selected_data["unique_users"],
+                       color=[ACCENT_BLUE, SUCCESS_GREEN, WARNING_ORANGE][:len(selected_data)])
+        ax2.set_title(f"👥 {selected_language} Demographics", fontsize=12, color=ACCENT_BLUE)
+        ax2.set_xlabel("🎮 User Type", fontsize=10)
+        ax2.set_ylabel("👤 Unique Users", fontsize=10)
 
-    # Create a dropdown for Q5
-    st.subheader("🔍 Explore User Demographics")
+        for bar in bars:
+            height = bar.get_height()
+            ax2.text(bar.get_x() + bar.get_width() / 2., height, f'{int(height)}', ha='center', va='bottom',
+                     fontweight='bold', fontsize=9)
 
-    # Dropdown to select a language
-    selected_language = st.selectbox(
-        "🌐 Select a Language",
-        options=q5["language"].unique(),  # List of unique languages
-        index=0  # Default to the first language in the list
-    )
-
-    # Filter data based on selected language
-    selected_data = q5[q5["language"] == selected_language]
-
-    # Plot the bar chart for the selected language
-    fig, ax = plt.subplots(figsize=(12, 6))
-    bars = ax.bar(selected_data["user_type"], selected_data["unique_users"],
-                  color=[ACCENT_BLUE, SUCCESS_GREEN, WARNING_ORANGE][:len(selected_data)])
-    ax.set_title(f"👥 User Demographics for {selected_language}", fontsize=16, color=ACCENT_BLUE)
-    ax.set_xlabel("🎮 User Type", fontsize=12)
-    ax.set_ylabel("👤 Unique Users", fontsize=12)
-
-    # Add value labels on bars
-    for bar in bars:
-        height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2., height,
-                f'{int(height)}',
-                ha='center', va='bottom', fontweight='bold')
-
-    st.pyplot(fig)
+        plt.tight_layout()
+        st.pyplot(fig)
